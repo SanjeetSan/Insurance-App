@@ -1,20 +1,28 @@
 package insurancesapplication;
 
+import java.time.LocalDate;
+
 public class ClaimDecision {
-    Claim claim;
-    String decisionNote;
-    boolean approved;
+	private String decision;
+	private String note;
+	private LocalDate date;
+	private double approvedAmount;
 
-    public ClaimDecision(Claim claim, String decisionNote, boolean approved) {
-        this.claim = claim;
-        this.decisionNote = decisionNote;
-        this.approved = approved;
-        claim.approved = approved;
-    }
+	public ClaimDecision(String decisionId, Claim claim, String decision, String note, LocalDate date,
+			double approvedAmount) {
+		this.decision = decision;
+		this.note = note;
+		this.date = date;
+		this.approvedAmount = approvedAmount;
+	}
 
-    @Override
-    public String toString() {
-        return "Claim " + claim.claimId + " Decision: " + 
-               (approved ? "Approved" : "Rejected") + " (" + decisionNote + ")";
-    }
+	public String getDecision() {
+		return decision;
+	}
+	public double getApprovedAmount() {
+		return approvedAmount;
+	}
+	public String summary() {
+		return "Decision: " + decision + "\nNote: " + note + "\nDate: " + date + "\nApproved Amount: " + approvedAmount;
+	}
 }
