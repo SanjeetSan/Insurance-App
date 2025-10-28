@@ -1,19 +1,22 @@
 package insurancesapplication;
 
+import java.time.LocalDate;
+
 public class PremiumPayment {
-    Policy policy;
-    double amount;
-    boolean paid;
+	private String paymentId;
+	private Policy policy;
+	private double amount;
+	private LocalDate date;
 
-    public PremiumPayment(Policy policy, double amount) {
-        this.policy = policy;
-        this.amount = amount;
-        this.paid = true;
-        policy.premiumsPaid = true;
-    }
+	public PremiumPayment(String paymentId, Policy policy, double amount, LocalDate date, boolean recorded) {
+		this.paymentId = paymentId;
+		this.policy = policy;
+		this.amount = amount;
+		this.date = date;
+	}
 
-    @Override
-    public String toString() {
-        return "Premium for Policy " + policy.policyId + " paid: " + paid;
-    }
+	public String receiptString() {
+		return "Payment ID: " + paymentId + "\nPolicy: " + policy.getPolicyId() + "\nAmount: " + amount + "\nDate: "
+				+ date;
+	}
 }
